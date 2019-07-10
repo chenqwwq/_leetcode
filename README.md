@@ -3,11 +3,11 @@
 
 ### 2019年
 #### 7.11
-- 895. Maximum Frequency Stack 
+- 895 Maximum Frequency Stack 
 #### 7.10
-- 669. Trim a Binary Search Tree
-- 219. Contains Duplicate II
-- 413. Arithmetic Slices 
+- 669 Trim a Binary Search Tree
+- 219 Contains Duplicate II
+- 413 Arithmetic Slices 
 #### 7.2
 - 238 Product of Array Except Self
 - 739 Daily Temperatures
