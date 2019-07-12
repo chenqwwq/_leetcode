@@ -2,7 +2,9 @@
 
 
 ### 2019年
+#### 7.12
 - 526 Beautiful Arrangement
+- 15 3Sum
 #### 7.11
 - 895 Maximum Frequency Stack 
 - 1080 Insufficient Nodes in Root to Leaf Paths
