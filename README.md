@@ -2,6 +2,12 @@
 
 
 ### 2019年
+#### 7.14
+- 32 Longest Valid Parentheses
+- 875 爱吃香蕉的珂珂
+- 1052 爱生气的书店老板
+#### 7.13
+- 941 Valid Mountain Array
 #### 7.12
 - 526 Beautiful Arrangement
 - 15 3Sum

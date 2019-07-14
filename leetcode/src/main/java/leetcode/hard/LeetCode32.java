@@ -28,6 +28,12 @@ import java.util.Stack;
  * @date 2019/7/12 13:20
  */
 public class LeetCode32 {
+
+
+    public static void main(String[] args) {
+        System.out.println(new LeetCode32().new Solution().longestValidParentheses("(()"));
+    }
+
     class Solution {
         public int longestValidParentheses(String s) {
             if (s == null || s.length() == 0) {
@@ -35,9 +41,36 @@ public class LeetCode32 {
             }
 
             final char[] chars = s.toCharArray();
-            Stack<Character> brackets = new Stack<>();
 
-            int max = 0;
+            // push index
+            Stack<Integer> brackets = new Stack<>();
+
+            // result
+            int res = 0;
+
+            // traversing
+            for (int i = 0; i < chars.length; i++) {
+                if (chars[i] == '(' || brackets.isEmpty()) {
+                    brackets.push(i);
+                    continue;
+                }
+
+                // chars[i] == ')' && brackets.isEmpty() == true
+                if (chars[brackets.pop()] == '(') {
+                    // 不为空使用i - 前一个的洗标
+                    if (!brackets.isEmpty()) {
+                        res = Math.max(res, i - brackets.peek());
+                    } else {
+                        // 为空表示0～i为止都是有效括号
+                        res = Math.max(res, i + 1);
+                    }
+                } else {
+                    // 连续))情况,入栈
+                    brackets.push(i);
+                }
+            }
+
+            return res;
         }
     }
 }
