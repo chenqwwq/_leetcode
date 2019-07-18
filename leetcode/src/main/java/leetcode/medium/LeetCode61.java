@@ -38,11 +38,11 @@ public class LeetCode61 {
         ListNode listNode5 = new ListNode(5);
         listNode1.next = listNode2;
 
-        ListNode listNode = new LeetCode61().new Solution().rotateRight(listNode1, 1);
+        ListNode listNode = new LeetCode61().new Solution().rotateRight(listNode1, 2);
 
         while (listNode != null) {
             System.out.println(listNode.val);
-            listNode = listNode1.next;
+            listNode = listNode.next;
         }
     }
 
@@ -61,38 +61,73 @@ public class LeetCode61 {
                 return head;
             }
 
-            // 知道链表长度可以取余确定右移后的头节点
-            // 现在不知道的时候可以顺序遍历
-            ListNode pre = null, resHead = head, tail = null;
-
-            while (--k > 0) {
-                pre = resHead;
-                // 遍历到链表末尾的时候重新接到head
-                if (resHead.next != null) {
-                    resHead = resHead.next;
-                } else {
-                    tail = resHead;
-                    resHead = head;
-                }
+            // 遍历取数组长度
+            int i = 1;
+            ListNode t = head;
+            while (t.next != null) {
+                i++;
+                t = t.next;
             }
 
-            // 断开原来的链接
+            if (k % i == 0) {
+                return head;
+            }
+
+            // 取最终的头结点
+            int resHeadIndex = i - (k % i) + 1;
+            ListNode pre = null, resHead = head;
+            while (--resHeadIndex > 0) {
+                pre = resHead;
+                resHead = resHead.next;
+            }
+
+            //
             if (pre != null) {
                 pre.next = null;
             }
 
-            // 尾部拼接
-            if (tail == null) {
-                ListNode node = resHead;
-                while (node.next != null) {
-                    node = node.next;
-                }
-                tail = node;
-            }
-
-            tail.next = head;
+            // 尾接头
+            t.next = head;
 
             return resHead;
         }
+//        public ListNode rotateRight(ListNode head, int k) {
+//            if (head == null || head.next == null || k == 0) {
+//                return head;
+//            }
+//
+//            // 知道链表长度可以取余确定右移后的头节点
+//            // 现在不知道的时候可以顺序遍历
+//            ListNode pre = null, resHead = head, tail = null;
+//
+//            while (--k > 0) {
+//                pre = resHead;
+//                // 遍历到链表末尾的时候重新接到head
+//                if (resHead.next != null) {
+//                    resHead = resHead.next;
+//                } else {
+//                    tail = resHead;
+//                    resHead = head;
+//                }
+//            }
+//
+//            // 断开原来的链接
+//            if (pre != null) {
+//                pre.next = null;
+//            }
+//
+//            // 尾部拼接
+//            if (tail == null) {
+//                ListNode node = resHead;
+//                while (node.next != null) {
+//                    node = node.next;
+//                }
+//                tail = node;
+//            }
+//
+//            tail.next = head;
+//
+//            return resHead;
+//        }
     }
 }
