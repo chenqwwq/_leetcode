@@ -48,20 +48,13 @@ import java.util.Map;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/pyramid-transition-matrix
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ * <p>
+ * // 1. 回溯超时
  *
  * @author chen
  * @date 2019/8/1 上午7:38
  */
 public class LeetCode756 {
-    public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("CDD");
-        list.add("CBC");
-        list.add("ACA");
-        list.add("ADD");
-        System.out.println(new LeetCode756().new Solution().pyramidTransition("CB", list));
-    }
-
     class Solution {
         public boolean pyramidTransition(String bottom, List<String> allowed) {
             if (bottom == null || bottom.length() == 0) {
@@ -70,10 +63,10 @@ public class LeetCode756 {
             // 考虑回溯解法
             // 拆分为Map
             Map<String, List<String>> map = new HashMap<>();
-            for (int i = 0; i < allowed.size(); i++) {
-                String substring = allowed.get(i).substring(0, 2);
+            for (String s : allowed) {
+                String substring = s.substring(0, 2);
                 List<String> orDefault = map.getOrDefault(substring, new ArrayList<>());
-                orDefault.add(allowed.get(i).substring(2));
+                orDefault.add(s.substring(2));
                 map.put(substring, orDefault);
             }
 
@@ -85,36 +78,29 @@ public class LeetCode756 {
                 return true;
             }
             // 第一层回溯,回bottom
-            for (int j = start; j < bottom.length() - 2; j++) {
-                String key = bottom.substring(start, start + 2);
-                if (!map.containsKey(key)) {
-                    return false;
+            String key = bottom.substring(start, start + 2);
+            if (!map.containsKey(key)) {
+                return false;
+            }
+            List<String> list = map.get(key);
+            for (String o : list) {
+                sb.append(o);
+                boolean flag;
+                if (start >= bottom.length() - 2) {
+                    flag = dfs(sb.toString(), 0, new StringBuilder(), map);
+                } else {
+                    flag = dfs(bottom, start + 1, sb, map);
                 }
-                List<String> list = map.get(key);
-                for (int i = list.size() - 1; i >= 0; i--) {
-                    String o = list.get(i);
-                    list.remove(o);
-                    if (list.isEmpty()) {
-                        map.remove(key);
-                    } else {
-                        map.put(key, list);
-                    }
-                    sb.append(o);
-                    boolean flag;
-                    if (start + 2 == bottom.length() - 1) {
-                        flag = dfs(sb.toString(), 0, new StringBuilder(), map);
-                    } else {
-                        flag = dfs(bottom, start + 2, sb, map);
-                    }
-                    if (flag) {
-                        return true;
-                    }
-                    sb.substring(0, sb.length() - 1);
-                    list.add(o);
-                    map.put(key, list);
+                // 为true直接返回
+                if (flag) {
+                    return true;
                 }
+                // 为false 进行回溯
+                // 跳回的地方很关键
+                sb.delete(sb.length() - 1, sb.length());
             }
             return false;
         }
     }
+
 }
