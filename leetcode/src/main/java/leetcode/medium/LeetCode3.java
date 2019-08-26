@@ -6,18 +6,28 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
+ *
  * @author chen
- * @description
- * @email ai654778@vip.qq.com
- * @date 19-1-6
+ * @date 19 -1-6
  */
 public class LeetCode3 {
+
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
+        System.out.println(new Solution().better("dvdf"));
+    }
+
     static class Solution {
 
         /**
          * 考虑滑动窗口机制
-         * @param s
-         * @return
+         *
+         * @param s the s
+         * @return int
          */
         public int lengthOfLongestSubstring(String s) {
             if (Objects.isNull(s) || s.length() == 0){
@@ -34,7 +44,7 @@ public class LeetCode3 {
                 for (int j = begin;j < begin+tempSign;j++){
                     // 相等时重置记录参数
                     if(bytes[i] == bytes[j]){
-                        maxSign = maxSign > sign ? maxSign : sign;
+                        maxSign = Math.max(maxSign, sign);
                         sign = 1;
                         i = ++begin;
                         continue outer;
@@ -42,15 +52,16 @@ public class LeetCode3 {
                 }
                 sign++;
             }
-            maxSign = maxSign > sign ? maxSign : sign;
+            maxSign = Math.max(maxSign, sign);
             return maxSign;
         }
 
         /**
          * 优化的滑动窗口机制,一直往后遍历就行了 O(n)的时间复杂度
-         *      map记录char和下标,如果找到一样的替换之前的下标
-         * @param s
-         * @return
+         * map记录char和下标,如果找到一样的替换之前的下标
+         *
+         * @param s the s
+         * @return int
          */
         public int better(String s) {
             int n = s.length(), ans = 0;
@@ -64,9 +75,5 @@ public class LeetCode3 {
             }
             return ans;
         }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new Solution().better("dvdf"));
     }
 }
