@@ -1,8 +1,9 @@
 ### [leetcode](https://leetcode-cn.com/problems/trim-a-binary-search-tree/submissions/)
 (* representative did not complete or read the answer)
 
-- 记录个大概吧
+- record a rough
 
+## 时间
 ### 2019年
 #### 9.6
 - 1025 Divisor Game
