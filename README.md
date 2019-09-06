@@ -4,6 +4,11 @@
 - 记录个大概吧
 
 ### 2019年
+#### 9.6
+- 1025 Divisor Game
+#### 9.4
+- 617 Merge Two Binary Trees
+- 938 Range Sum of BST
 #### 8.26 
 - 109 有序链表转换二叉搜索树
 #### 8.11
