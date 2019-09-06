@@ -34,9 +34,10 @@ import java.util.Arrays;
 public class LeetCode392 {
     class Solution {
         public boolean isSubsequence(String s, String t) {
-            final int length = t.length();
-            final char[] tCha = t.toCharArray();
-            final char[] sCha = s.toCharArray();
+            final int length = t.length(),
+                    sLength = s.length();
+            final char[] tCha = t.toCharArray(),
+                    sCha = s.toCharArray();
             boolean[] dp = new boolean[length];
 
             // 初始化数组
@@ -46,10 +47,16 @@ public class LeetCode392 {
                     break;
                 }
             }
-
-            for (int i = 0; i < length; i++) {
-                if (tCha[i] ==)
+            for (int i = 1; i < sLength; i++) {
+                for (int j = i; j < length; j++) {
+                    if (sCha[i] == tCha[j] && dp[j - 1]) {
+                        Arrays.fill(dp, j, t.length(), true);
+                        break;
+                    }
+                }
             }
+
+            return dp[length - 1];
         }
     }
 }
