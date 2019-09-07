@@ -3,8 +3,11 @@
 
 - record a rough
 
-## 时间
 ### 2019年
+#### 9.7
+- 122 Best Time to Buy and Sell Stock II
+- 121 Best Time to Buy and Sell Stock
+- 392 Is Subsequence
 #### 9.6
 - 1025 Divisor Game
 #### 9.4

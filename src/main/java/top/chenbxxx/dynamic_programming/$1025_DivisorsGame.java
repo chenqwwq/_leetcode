@@ -35,12 +35,7 @@ package top.chenbxxx.dynamic_programming;
  * @author bingxin.chen
  * @date 2019/9/5 12:18
  */
-public class LeetCode1025 {
-
-    public static void main(String[] args) {
-        new LeetCode1025().new Solution().divisorGame(20);
-    }
-
+public class $1025_DivisorsGame {
     /**
      * dp[n]表示数字为N的时候,Alice是否可以赢
      * 非最简方法,实践dp
@@ -59,11 +54,6 @@ public class LeetCode1025 {
                     }
                 }
             }
-
-            for (int i = 0; i < dp.length; i++) {
-                System.out.println(dp[i]);
-            }
-
             return dp[N];
         }
     }

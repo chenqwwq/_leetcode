@@ -33,7 +33,7 @@ package top.chenbxxx.tree;
  * @author bingxin.chen
  * @date 2019/9/4 12:44
  */
-public class LeetCode617 {
+public class $617_MergeTwoBinaryTrees {
     public class TreeNode {
         int val;
         TreeNode left;
@@ -44,29 +44,21 @@ public class LeetCode617 {
         }
     }
 
-    /**
-     *
-     */
     class Solution {
         public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
             if (t1 == null && t2 == null) {
                 return null;
             }
-
             // 一棵树子树为空,之后的节点都为另外一棵树,直接下挂
             if (t1 == null) {
                 return t2;
             }
-
             if (t2 == null) {
                 return t1;
             }
-
-
             TreeNode root = new TreeNode(t1.val + t2.val);
             root.left = mergeTrees(t1.left, t2.left);
             root.right = mergeTrees(t1.right, t2.right);
-
             return root;
         }
     }

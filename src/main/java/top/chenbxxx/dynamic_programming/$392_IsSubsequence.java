@@ -19,7 +19,7 @@ import java.util.Arrays;
  * <p>
  * Example 2:
  * s = "axc", t = "ahbgdc"
- * <p>
+ ** <p>
  * Return false.
  * <p>
  * Follow up:
@@ -31,32 +31,45 @@ import java.util.Arrays;
  * @author bingxin.chen
  * @date 2019/9/6 12:11
  */
-public class LeetCode392 {
+public class $392_IsSubsequence {
+    public static void main(String[] args) {
+        new $392_IsSubsequence().new Solution().isSubsequence("axc", "ahbgdc");
+    }
     class Solution {
+        /**
+         * 为了练习DP,强行用的,效率并不高
+         */
         public boolean isSubsequence(String s, String t) {
+            // 记录基础数据
             final int length = t.length(),
                     sLength = s.length();
+            if (sLength > length) {
+                return false;
+            }
+
             final char[] tCha = t.toCharArray(),
                     sCha = s.toCharArray();
-            boolean[] dp = new boolean[length];
 
-            // 初始化数组
-            for (int i = 0; i < length; i++) {
-                if (sCha[0] == tCha[i]) {
-                    Arrays.fill(dp, i, t.length(), true);
-                    break;
-                }
-            }
-            for (int i = 1; i < sLength; i++) {
-                for (int j = i; j < length; j++) {
-                    if (sCha[i] == tCha[j] && dp[j - 1]) {
-                        Arrays.fill(dp, j, t.length(), true);
-                        break;
+            // dp[n]表示s的某个字符在t.subString(0,n+1)中是否是子串
+            // dp数组可以复用,针对于s的每个字母
+            // 对于sCha[i],p[n] = dp[n] && sCha[i] == tCha[n]
+            boolean[][] dp = new boolean[sLength + 1][length + 1];
+
+            // 全部填充为true
+            Arrays.fill(dp[0], true);
+
+            // 外部遍历s,内部遍历t
+            for (int i = 0; i < sLength; i++) {
+                for (int j = i; j < t.length(); j++) {
+                    if (sCha[i] == tCha[j]) {
+                        dp[i + 1][j + 1] = dp[i][j];
+                    } else {
+                        dp[i + 1][j + 1] = dp[i + 1][j];
                     }
                 }
             }
 
-            return dp[length - 1];
+            return dp[sLength][length];
         }
     }
 }

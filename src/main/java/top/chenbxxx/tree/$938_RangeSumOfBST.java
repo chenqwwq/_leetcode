@@ -28,7 +28,7 @@ package top.chenbxxx.tree;
  * @author bingxin.chen
  * @date 2019 /9/4 12:12
  */
-public class LeetCode938 {
+public class $938_RangeSumOfBST {
     /**
      * The type Tree node.
      */
