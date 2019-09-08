@@ -4,6 +4,9 @@
 - record a rough
 
 ### 2019年
+#### 9.8
+- 764 Min Cost Climbing Stairs
+- 70 Climbing Stairs
 #### 9.7
 - 122 Best Time to Buy and Sell Stock II
 - 121 Best Time to Buy and Sell Stock
@@ -28,8 +31,7 @@
 - 199 二叉树的右视图
 - 756 金字塔转化矩阵
 #### 7.26
-- 120 三角形最小路径和
-#### 7.23 
+- 120 三角形最小路径和 #### 7.23 
 - 36 有效的数独
 #### 7.21
 - 123 买卖股票的最佳时机 III
