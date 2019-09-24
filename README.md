@@ -4,6 +4,8 @@
 - record a rough
 
 ### 2019年
+#### 9.29
+- 94 Binary Tree Inorder Traversal
 #### 9.8
 - 764 Min Cost Climbing Stairs
 - 70 Climbing Stairs

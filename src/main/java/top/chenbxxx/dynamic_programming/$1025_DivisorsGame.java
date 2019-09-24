@@ -36,6 +36,7 @@ package top.chenbxxx.dynamic_programming;
  * @date 2019/9/5 12:18
  */
 public class $1025_DivisorsGame {
+
     /**
      * dp[n]表示数字为N的时候,Alice是否可以赢
      * 非最简方法,实践dp
