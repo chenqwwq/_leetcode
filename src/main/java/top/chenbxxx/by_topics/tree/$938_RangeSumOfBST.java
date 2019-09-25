@@ -1,4 +1,4 @@
-package top.chenbxxx.tree;
+package top.chenbxxx.by_topics.tree;
 
 /**
  * 938. Range Sum of BST

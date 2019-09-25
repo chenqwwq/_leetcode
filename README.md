@@ -4,7 +4,11 @@
 - record a rough
 
 ### 2019年
-#### 9.29
+#### 9.25
+- 589 N-ary Tree Preorder Traversal
+- 590 N-ary Tree Postorder Traversal
+- 700 Search in a Binary Search Tree
+#### 9.24
 - 94 Binary Tree Inorder Traversal
 #### 9.8
 - 764 Min Cost Climbing Stairs

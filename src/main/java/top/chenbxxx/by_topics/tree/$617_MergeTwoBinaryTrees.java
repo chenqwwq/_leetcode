@@ -1,4 +1,4 @@
-package top.chenbxxx.tree;
+package top.chenbxxx.by_topics.tree;
 
 /**
  * 617. Merge Two Binary Trees

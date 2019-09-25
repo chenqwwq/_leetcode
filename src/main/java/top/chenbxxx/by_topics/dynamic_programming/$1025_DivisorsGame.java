@@ -1,4 +1,4 @@
-package top.chenbxxx.dynamic_programming;
+package top.chenbxxx.by_topics.dynamic_programming;
 
 /**
  * 1025. Divisor Game
