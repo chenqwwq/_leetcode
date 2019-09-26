@@ -4,6 +4,10 @@
 - record a rough
 
 ### 2019年
+#### 9.26
+- 559 Maximum Depth of N-ary Tree
+- 897 Increasing Order Search Tree
+- 965 Univalued Binary Tree
 #### 9.25
 - 589 N-ary Tree Preorder Traversal
 - 590 N-ary Tree Postorder Traversal
