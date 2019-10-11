@@ -4,6 +4,10 @@
 - record a rough
 
 ### 2019年
+#### 10.11
+- 905 Sort Array By Parity
+#### 10.10 
+- 832 Flipping an Image
 #### 9.26
 - 559 Maximum Depth of N-ary Tree
 - 897 Increasing Order Search Tree
