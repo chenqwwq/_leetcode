@@ -34,13 +34,8 @@ public class $977_SquaresOfASortedArray {
     class Solution {
 
         // Java8 Lambda
-//        public int[] sortedSquares(int[] A) {
-//            return Arrays.stream(A).map(a -> a = (int)Math.pow(a,2)).sorted().toArray();
-//        }
-
         public int[] sortedSquares(int[] A) {
-            return null;
+            return Arrays.stream(A).map(a -> a = (int) Math.pow(a, 2)).sorted().toArray();
         }
-
     }
 }
