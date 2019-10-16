@@ -4,8 +4,12 @@
 - record a rough
 
 ### 2019年
+#### 10.16
+- 1051,561 Change to bucket sort
 #### 10.15
 - 977 Squares of a Sorted Array
+- 1051 Height Checker
+- 561 Array Partition I
 #### 10.11
 - 905 Sort Array By Parity
 #### 10.10 

@@ -1,7 +1,5 @@
 package top.chenbxxx.by_topics.array;
 
-import java.util.Arrays;
-
 /**
  * 561. Array Partition I
  * Easy
@@ -21,20 +19,49 @@ import java.util.Arrays;
  * @date 2019/10/15 12:17
  */
 public class $561_ArrayPartitionI {
-    class Solution {
 
-        // fixme: 使用自定义桶排序完成
+    static class Solution {
+
+        private static final Integer SIZE = 20001;
 
         public int arrayPairSum(int[] nums) {
-            // java自带的排序Api
-            Arrays.sort(nums);
+            // 初始化桶
+            int[] bucket = new int[20001];
 
-            int res = 0;
-            for (int i = 0; i < nums.length; i += 2) {
-                res += nums[i];
+            // 遍历入桶
+            for (int i : nums) {
+                bucket[i + 10000]++;
             }
 
+            // 当前计数
+            // 仅在计数为奇数的时候附加值
+            int count = 0, res = 0, currIndex = 0;
+
+            // 二次遍历,遍历桶
+            while (currIndex < SIZE) {
+                if (bucket[currIndex] == 0) {
+                    currIndex++;
+                    continue;
+                }
+                // 判断奇数
+                if ((++count & 1) == 1) {
+                    res += currIndex - 10000;
+                }
+                bucket[currIndex]--;
+            }
             return res;
         }
+
+//        public int arrayPairSum(int[] nums) {
+//            // java自带的排序Api
+//            Arrays.sort(nums);
+//
+//            int res = 0;
+//            for (int i = 0; i < nums.length; i += 2) {
+//                res += nums[i];
+//            }
+//
+//            return res;
+//        }
     }
 }

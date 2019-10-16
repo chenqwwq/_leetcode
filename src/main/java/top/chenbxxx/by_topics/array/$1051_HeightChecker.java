@@ -39,26 +39,24 @@ public class $1051_HeightChecker {
             // 元素遍历入桶
             // 0号桶实际是空着的
             for (int i : heights) {
-                bucket[i]++;
+                ++bucket[i];
             }
 
-            // 结果
-            int res = 0;
-            // 当前桶下标
-            int currIndex = 1;
+            // 返回值,当前桶的下标
+            int res = 0, currIndex = 0;
             // 二次遍历
             for (int i : heights) {
                 // 找到非空桶
-                while (bucket[currIndex++] == 0) {
+                while (bucket[currIndex] == 0) {
+                    ++currIndex;
                 }
 
                 if (currIndex != i) {
-
+                    res++;
                 }
 
-
+                --bucket[currIndex];
             }
-
             return res;
         }
 
