@@ -25,7 +25,7 @@
 #### 9.24
 - 94 Binary Tree Inorder Traversal
 #### 9.8
-- 764 Min Cost Climbing Stairs
+- 764 Min Cost Climbing Stairs 
 - 70 Climbing Stairs
 #### 9.7
 - 122 Best Time to Buy and Sell Stock II

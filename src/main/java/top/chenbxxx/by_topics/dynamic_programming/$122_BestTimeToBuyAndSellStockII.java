@@ -31,7 +31,7 @@ package top.chenbxxx.by_topics.dynamic_programming;
  * @author chen
  * @date 2019/9/7 下午8:01
  */
-public class $122_BestTimeToBuyAndSellII {
+public class $122_BestTimeToBuyAndSellStockII {
     class Solution {
         public int maxProfit(int[] prices) {
             if (prices == null || prices.length == 0) {
