@@ -36,9 +36,9 @@ import java.util.LinkedList;
  * @date 2019/10/20 下午5:48
  */
 public class $934_ShortestBridge {
-    public static void main(String[] args) {
-        System.out.println(new $934_ShortestBridge().new Solution().shortestBridge(new int[][]{{0, 1, 0, 0, 0, 0}, {0, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {1, 1, 0, 0, 0, 0}}));
-    }
+//    public static void main(String[] args) {
+//        System.out.println(new $934_ShortestBridge().new Solution().shortestBridge(new int[][]{{0, 1, 0, 0, 0, 0}, {0, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {1, 1, 0, 0, 0, 0}}));
+//    }
 
     class Solution {
         public int shortestBridge(int[][] A) {

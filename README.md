@@ -4,6 +4,9 @@
 - record a rough
 
 ### 2019年
+#### 10.22
+- 108 Convert Sorted Array to Binary Search Tree
+- 690 Employee Importance
 #### 10.16
 - 1051,561 Change to bucket sort
 #### 10.15

@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -33,18 +31,7 @@ import java.util.List;
  * @author chen
  * @date 2019/10/21 上午8:31
  */
-public class $690_ {
-    public static void main(String[] args) {
-        Employee employee1 = new Employee(1, 5, Arrays.asList(2, 3));
-        Employee employee2 = new Employee(2, 3, new ArrayList<>());
-        Employee employee3 = new Employee(3, 3, new ArrayList<>());
-
-        System.out.println(new $690_().new Solution().getImportance(new ArrayList<Employee>() {{
-            add(employee1);
-            add(employee2);
-            add(employee3);
-        }}, 1));
-    }
+public class $690_EmployeeImportance {
 
     @Data
     @AllArgsConstructor
@@ -60,11 +47,54 @@ public class $690_ {
     }
 
     class Solution {
+        int result = 0;
         public int getImportance(List<Employee> employees, int id) {
-            int res = 0;
-            // 遍历一遍
+            // 不使用Map,使用桶排的思路
+            // The maximum number of employees won't exceed 2000.
+            Employee[] employeeArr = new Employee[2000];
+            for (Employee employee : employees) {
+                employeeArr[employee.id] = employee;
+            }
+            addImportance(id, employeeArr);
+            return result;
+        }
 
-            return res;
+        private void addImportance(int id, Employee[] employees) {
+            result += employees[id].importance;
+            if (employees[id].subordinates == null || employees[id].subordinates.isEmpty()) {
+                return;
+            }
+            for (int innerId : employees[id].subordinates) {
+                addImportance(innerId, employees);
+            }
         }
     }
+
+//    class Solution {
+//        public int getImportance(List<Employee> employees, int id) {
+//            int res = 0;
+//            // 遍历一遍全部加入到Map中
+//            Map<Integer,Employee> map = new HashMap<>(employees.size());
+//            // id - employee
+//            for (Employee employee : employees){
+//                map.put(employee.id,employee);
+//            }
+//
+//            Stack<Integer> stack = new Stack<>();
+//            stack.push(id);
+//
+//            // 递归叠加
+//            while (!stack.isEmpty()){
+//                Employee employee = map.get(stack.pop());
+//
+//                res += employee.importance;
+//
+//                for (int i : employee.subordinates){
+//                    stack.push(i);
+//                }
+//            }
+//
+//            return res;
+//        }
+//    }
 }
