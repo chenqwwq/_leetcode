@@ -16,7 +16,7 @@ public class SinglePivotQuickSortRecursive implements SortInterface {
         }
 
         // 以最左边的元素作为中轴
-        int axis = arr[0];
+        int axis = arr[left];
 
         // 两端交换,最后交换中轴数
         int i = left + 1, j = right;
@@ -31,10 +31,10 @@ public class SinglePivotQuickSortRecursive implements SortInterface {
                 j--;
             }
 
-            if (i < j) {
+            if (i <= j) {
                 swap(arr, i, j);
-                i--;
-                j++;
+                i++;
+                j--;
             }
         }
 
@@ -49,6 +49,12 @@ public class SinglePivotQuickSortRecursive implements SortInterface {
         arr[i] ^= arr[j];
         arr[j] ^= arr[i];
         arr[i] ^= arr[j];
+
+
+//        final int i1 = arr[i];
+//        arr[i] = arr[j];
+//        arr[j] = i1;
+
     }
 
     @Override
