@@ -4,6 +4,22 @@
 - record a rough
 
 ### 2019年
+#### 10.31
+- 206 Reverse Linked List
+- 237 Delete Node in a Linked List
+- 876 Middle of the Linked List
+- 21 Merge Two Sorted Lists
+- 83 Remove Duplicates from Sorted List
+- 141 Linked List Cycle
+####20.30
+- 622 Design Circular Queue
+- 641 Design Circular Deque
+#### 10.27 
+- 496 Next Greater Element I
+- 503 Next Greater Element II
+#### 10.25 
+- 622 Design Circular Queue
+- 641 Design Circular Deque
 #### 10.22
 - 108 Convert Sorted Array to Binary Search Tree
 - 690 Employee Importance

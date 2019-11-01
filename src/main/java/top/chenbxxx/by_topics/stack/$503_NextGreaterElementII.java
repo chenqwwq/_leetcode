@@ -1,6 +1,5 @@
 package top.chenbxxx.by_topics.stack;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -22,35 +21,33 @@ import java.util.Stack;
  */
 public class $503_NextGreaterElementII {
 
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(new $503_NextGreaterElementII().new Solution().nextGreaterElements(new int[]{5, 4, 3, 2, 1})));
-    }
-
     class Solution {
         public int[] nextGreaterElements(int[] nums) {
             // 循环数组的单调栈求法
 
             int[] res = new int[nums.length];
 
-            Stack<Integer> stack = new Stack<>();
-            stack.push(nums[nums.length - 1]);
+            // 重新复制一遍数组到原数组后面
+            int[] des = new int[nums.length * 2];
+            System.arraycopy(nums, 0, des, 0, nums.length);
+            System.arraycopy(nums, 0, des, nums.length, nums.length);
 
-            for (int i = nums.length - 2; i >= 0; i--) {
-                while (!stack.isEmpty() && stack.peek() <= nums[i]) {
-                    stack.pop();
+            // 求单调数组
+            int[] next = new int[nums.length];
+            Stack<Integer> monoStack = new Stack<>();
+
+            for (int i = des.length - 1; i >= 0; i--) {
+                while (!monoStack.isEmpty() && monoStack.peek() <= des[i]) {
+                    monoStack.pop();
                 }
-                // 经过上面的循环之后,栈中的首元素肯定比nums[i]大
+                if (i < nums.length) {
+                    next[i] = monoStack.isEmpty() ? -1 : monoStack.peek();
+                }
 
-                res[i] = stack.isEmpty() ? -1 : stack.peek();
-                stack.push(nums[i]);
+                monoStack.push(des[i]);
             }
 
-            while (!stack.isEmpty() && stack.peek() <= nums[nums.length - 1]) {
-                stack.pop();
-            }
-            res[nums.length - 1] = stack.isEmpty() ? -1 : stack.peek();
-
-            return res;
+            return next;
         }
     }
 }
