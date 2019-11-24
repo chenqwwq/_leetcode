@@ -38,6 +38,14 @@ package top.chenbxxx.by_topics.dynamic_programming;
 public class $877_StoneGame {
     class Solution {
         public boolean stoneGame(int[] piles) {
+            // 博弈论 dp问题
+            // 二维数组dp,因为先看了答案所以先尝试性解决
+
+
+            int[][] dp = new int[piles.length + 1][piles.length + 1];
+
+            //
+
             return false;
         }
     }
