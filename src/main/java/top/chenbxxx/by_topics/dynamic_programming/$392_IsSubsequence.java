@@ -32,9 +32,6 @@ import java.util.Arrays;
  * @date 2019/9/6 12:11
  */
 public class $392_IsSubsequence {
-    public static void main(String[] args) {
-        new $392_IsSubsequence().new Solution().isSubsequence("axc", "ahbgdc");
-    }
     class Solution {
         /**
          * 为了练习DP,强行用的,效率并不高

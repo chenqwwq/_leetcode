@@ -25,9 +25,6 @@ package top.chenbxxx.by_topics.math;
  * @date 2019/11/24 下午2:15
  */
 public class $7_ReverseInteger {
-    public static void main(String[] args) {
-        System.out.println(new $7_ReverseInteger().new Solution().reverse(10));
-    }
 
     class Solution {
         public int reverse(int x) {
@@ -47,7 +44,7 @@ public class $7_ReverseInteger {
                 // 取余数,余数就是
                 int curr = x % 10;
 
-                if ((tmp = tmp * 10 + curr) > Integer.MAX_VALUE || tmp < Integer.MIN_VALUE) {
+                if ((tmp = tmp * 10 + curr) > Integer.MAX_VALUE) {
                     return 0;
                 }
 

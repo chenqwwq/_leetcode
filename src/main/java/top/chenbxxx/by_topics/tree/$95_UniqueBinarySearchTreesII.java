@@ -40,10 +40,6 @@ import java.util.List;
  * @date 2019/11/14 下午11:55
  */
 public class $95_UniqueBinarySearchTreesII {
-    public static void main(String[] args) {
-        System.out.println(new $95_UniqueBinarySearchTreesII().new Solution().generateTrees(3));
-    }
-
     public class TreeNode {
         int val;
         TreeNode left;
@@ -68,6 +64,12 @@ public class $95_UniqueBinarySearchTreesII {
         }
 
 
+        /**
+         * 分治+递归
+         * // 遍历数组,每个节点轮流作为root节点
+         * // 先获得左右两个子树所有的子树排列
+         * // 左右两个子树的列表做两层循环遍历,排列组合
+         */
         private List<TreeNode> generate(int left, int right) {
             ArrayList<TreeNode> nodes = new ArrayList<>();
             if (left > right) {
