@@ -58,6 +58,8 @@ public class $103_BinaryTreeZigzagLevelOrderTraversal {
             while (nodes.size() > 0) {
 
             }
+
+            return null;
         }
 
 
@@ -74,7 +76,7 @@ public class $103_BinaryTreeZigzagLevelOrderTraversal {
             if ((depth & 1) == 1) {
                 while (nodes.size() > 0) {
                     final TreeNode first = nodes.getFirst();
-                    res.get(depth).add(first.)
+//                    res.get(depth).add(first.);
                 }
             }
         }
