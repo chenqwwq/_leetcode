@@ -27,9 +27,6 @@ import java.util.Arrays;
  * @date 2019/10/11 12:38
  */
 public class $977_SquaresOfASortedArray {
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString("ehhl ss".split(" ")));
-    }
 
     class Solution {
 

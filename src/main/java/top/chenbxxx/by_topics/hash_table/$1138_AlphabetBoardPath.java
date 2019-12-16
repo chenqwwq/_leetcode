@@ -38,9 +38,6 @@ package top.chenbxxx.by_topics.hash_table;
  * @date 2019/11/29 11:33
  */
 public class $1138_AlphabetBoardPath {
-    public static void main(String[] args) {
-        new $1138_AlphabetBoardPath().new Solution().alphabetBoardPath("zdz");
-    }
 
     class Solution {
 
@@ -54,7 +51,7 @@ public class $1138_AlphabetBoardPath {
                 int tarY = tar / 5;
 
                 // 需要考虑z的独特位置
-                if(currY == 5){
+                if (currY == 5) {
                     if (tarY > currY) {
                         while (currY++ < tarY) {
                             res.append("D");
@@ -74,7 +71,7 @@ public class $1138_AlphabetBoardPath {
                             res.append("L");
                         }
                     }
-                }else {
+                } else {
                     if (tarX > currX) {
                         while (currX++ < tarX) {
                             res.append("R");

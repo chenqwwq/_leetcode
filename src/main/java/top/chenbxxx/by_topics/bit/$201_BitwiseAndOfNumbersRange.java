@@ -23,9 +23,6 @@ package top.chenbxxx.by_topics.bit;
  */
 public class $201_BitwiseAndOfNumbersRange {
 
-    public static void main(String[] args) {
-        System.out.println(new $201_BitwiseAndOfNumbersRange().new Solution().rangeBitwiseAnd(2147483646,2147483647));
-    }
     class Solution {
         public int rangeBitwiseAnd(int m, int n) {
             // 暴力会时间超限

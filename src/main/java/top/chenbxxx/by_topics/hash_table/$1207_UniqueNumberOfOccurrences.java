@@ -49,7 +49,7 @@ public class $1207_UniqueNumberOfOccurrences {
             int[] tab = new int[2001];
             int[] frequency = new int[1001];
             for (int i : arr) {
-                if(frequency[tab[i + 1000]] > 0){
+                if (frequency[tab[i + 1000]] > 0) {
                     frequency[tab[i + 1000]]--;
                 }
                 tab[i + 1000]++;
@@ -57,8 +57,8 @@ public class $1207_UniqueNumberOfOccurrences {
 
             }
             // 遍历频率数组
-            for (int i : frequency){
-                if(i > 1){
+            for (int i : frequency) {
+                if (i > 1) {
                     return false;
                 }
             }
