@@ -1,4 +1,4 @@
-package top.chenbxxx.by_topics.xxx_first_search;
+package top.chenbxxx.by_topics.bfs_dfs;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,6 +48,7 @@ public class $690_EmployeeImportance {
 
     class Solution {
         int result = 0;
+
         public int getImportance(List<Employee> employees, int id) {
             // 不使用Map,使用桶排的思路
             // The maximum number of employees won't exceed 2000.

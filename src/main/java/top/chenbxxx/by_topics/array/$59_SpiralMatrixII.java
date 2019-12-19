@@ -19,35 +19,37 @@ package top.chenbxxx.by_topics.array;
  * @date 2019/12/16 16:36
  */
 public class $59_SpiralMatrixII {
+
     class Solution {
         public int[][] generateMatrix(int n) {
             int[][] matrix = new int[n][n];
 
             // 一圈一圈向里面缩进
-            final int max = n * n;
-            int curr = 0,x = 0,y = 0,level = 0;
+            final int maxLevel = n / 2 + 1;
+            int curr = 0, x = 0, y = 0, level = 0;
 
-            while (curr <= max){
-                while (x < n){
-                    matrix[x++][y] = ++curr;
-                }
+            while (level < maxLevel) {
 
-                x--;
-
-                while (y < n){
+                while (y < n - level) {
                     matrix[x][y++] = ++curr;
                 }
 
                 y--;
 
-                while (x >= 0){
-                    matrix[x--][y] = ++curr;
+                while (++x < n - level) {
+                    matrix[x][y] = ++curr;
                 }
 
-                x++;
+                x--;
 
-                while (y >= 0){
-                    matrix[x][y--] = ++curr;
+                while (--y >= level) {
+                    matrix[x][y] = ++curr;
+                }
+
+                y++;
+
+                while (--x > level) {
+                    matrix[x][y] = ++curr;
                 }
 
                 x = ++level;

@@ -1,4 +1,4 @@
-package top.chenbxxx.by_topics.hash_table;
+package top.chenbxxx.by_topics.hash;
 
 /**
  * 1207. 独一无二的出现次数

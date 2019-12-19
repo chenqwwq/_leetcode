@@ -1,4 +1,4 @@
-package top.chenbxxx.by_topics.xxx_first_search;
+package top.chenbxxx.by_topics.bfs_dfs;
 
 import java.util.LinkedList;
 

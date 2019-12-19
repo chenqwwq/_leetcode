@@ -1,4 +1,4 @@
-package top.chenbxxx.by_topics.hash_table;
+package top.chenbxxx.by_topics.hash;
 
 /**
  * 1138. 字母板上的路径

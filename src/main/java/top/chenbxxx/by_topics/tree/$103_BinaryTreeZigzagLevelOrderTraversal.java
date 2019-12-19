@@ -29,7 +29,7 @@ import java.util.List;
  * @date 2019/11/25 上午8:27
  */
 public class $103_BinaryTreeZigzagLevelOrderTraversal {
-    public class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -40,45 +40,52 @@ public class $103_BinaryTreeZigzagLevelOrderTraversal {
     }
 
     class Solution {
-        List<List<Integer>> res = new ArrayList<>();
-
-        /**
-         * 以双端队列作为辅助
-         * 将子节点全部入队列,且逐个遍历
-         */
-        LinkedList<TreeNode> nodes = new LinkedList<>();
+        // 常规bfs,翻转奇数行的形式过于取巧
 
         public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-            if (root == null) {
-                return res;
-            }
+            List<List<Integer>> result = new ArrayList<>();
 
+            // 采用双端队列的形式
+            LinkedList<TreeNode> nodes = new LinkedList<>();
             nodes.add(root);
+            boolean flag = true;
 
-            while (nodes.size() > 0) {
+            while (!nodes.isEmpty()) {
+                // 当前层的结果
+                List<Integer> tmp = new ArrayList<>();
+                // 当前层的元素个数
+                int count = nodes.size();
 
-            }
+                while (count-- > 0) {
+                    // flag为true是从队头取元素 false时从队尾取元素
+                    final TreeNode node = flag ? nodes.pollFirst() : nodes.pollLast();
 
-            return null;
-        }
+                    // 跳出while循环
+                    if (node == null) {
+                        continue;
+                    }
 
+                    // 添加到tmp中
+                    tmp.add(node.val);
 
-        private void bfs(LinkedList<TreeNode> nodes, int depth) {
-            if (nodes == null) {
-                return;
-            }
-
-            while (nodes.size() < depth) {
-                res.add(new ArrayList<>());
-            }
-
-            // 根据奇偶判断是否从左往右
-            if ((depth & 1) == 1) {
-                while (nodes.size() > 0) {
-                    final TreeNode first = nodes.getFirst();
-//                    res.get(depth).add(first.);
+                    // 添加元素
+                    if (flag) {
+                        nodes.addLast(node.left);
+                        nodes.addLast(node.right);
+                    } else {
+                        nodes.addFirst(node.right);
+                        nodes.addFirst(node.left);
+                    }
                 }
+
+                // 遍历永远从前往后遍历
+                result.add(tmp);
+                flag = !flag;
             }
+
+            result.remove(result.size() - 1);
+            return result;
+
         }
 
     }
