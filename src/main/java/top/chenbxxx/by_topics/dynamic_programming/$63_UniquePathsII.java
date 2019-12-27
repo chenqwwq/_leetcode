@@ -5,9 +5,6 @@ package top.chenbxxx.by_topics.dynamic_programming;
  * @date 2019/12/23 16:48
  */
 public class $63_UniquePathsII {
-    public static void main(String[] args) {
-        System.out.println(new $63_UniquePathsII().new Solution().uniquePathsWithObstacles(new int[][]{{1,0}}));
-    }
     class Solution {
         public int uniquePathsWithObstacles(int[][] obstacleGrid) {
             int m = obstacleGrid.length,n = obstacleGrid[0].length;
