@@ -34,9 +34,15 @@ public class $16 {
             if (n == 0) {
                 return 1;
             }
+            boolean less = false;
+            if (n < 0) {
+                n = -n;
+                less = true;
+            }
             // 递归求解
             double res = myPow(x, n >> 1);
-            return res * res * ((n & 1) == 1 ? x : 1);
+            final double v = res * res * ((n & 1) == 1 ? x : 1);
+            return less ? 1 / v : v;
         }
     }
 }
