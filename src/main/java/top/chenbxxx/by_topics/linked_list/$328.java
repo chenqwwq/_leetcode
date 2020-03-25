@@ -34,7 +34,7 @@ public class $328 {
 
     class Solution {
         public ListNode oddEvenList(ListNode head) {
-
+            return null;
         }
     }
 }
