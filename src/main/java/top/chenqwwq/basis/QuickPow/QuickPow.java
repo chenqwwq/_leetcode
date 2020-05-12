@@ -1,4 +1,4 @@
-package top.chenqwwq.basis;
+package top.chenqwwq.basis.QuickPow;
 
 /**
  * 快速幂 Quick Pow
