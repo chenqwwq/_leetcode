@@ -69,4 +69,15 @@ public class ListUtils {
         return list == null && i == arr.length;
     }
 
+    public static ListNode getList(int level) {
+        ListNode head = new ListNode(1);
+        ListNode tHead = head;
+        for (int i = 2; i <= level; i++) {
+            ListNode tempNode = new ListNode(i);
+            tHead.next = tempNode;
+            tHead = tempNode;
+        }
+        return head;
+    }
+
 }
