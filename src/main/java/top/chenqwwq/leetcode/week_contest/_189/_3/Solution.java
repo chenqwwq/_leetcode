@@ -21,6 +21,9 @@ import java.util.*;
  * @date 2020/5/17 上午11:38
  */
 public class Solution {
+    /**
+     * 超时
+     */
     public List<Integer> peopleIndexes(List<List<String>> favoriteCompanies) {
         List<Integer> res = new ArrayList<>();
         if (favoriteCompanies == null || favoriteCompanies.size() == 0) {
