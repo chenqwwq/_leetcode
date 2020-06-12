@@ -25,6 +25,19 @@ public class ListUtils {
         return lists;
     }
 
+    public static <E> boolean compare2D(List<List<E>> l1, List<List<E>> l2) {
+        outer:
+        for (List<E> list : l1) {
+            for (List<E> list1 : l2) {
+                if (compare(list, list1)) {
+                    continue outer;
+                }
+            }
+            return false;
+        }
+        return true;
+    }
+
     public static <E> boolean compare(List<E> l1, List<E> l2) {
         assert l1 != null;
         assert l2 != null;
