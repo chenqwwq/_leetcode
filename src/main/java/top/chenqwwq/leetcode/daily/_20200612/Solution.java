@@ -49,16 +49,13 @@ public class Solution {
                 if (sum < target) {
                     while (nums[left++] == nums[left] && left < right) {
                     }
-                    ;
                 } else if (sum > target) {
                     while (nums[right--] == nums[right] && left < right) {
                     }
-                    ;
                 } else {
                     res.add(Arrays.asList(nums[i], nums[left], nums[right]));
                     while (nums[left++] == nums[left] && left < right) {
                     }
-                    ;
                 }
 
             }
