@@ -11,6 +11,38 @@ import java.util.Queue;
  */
 public class TreeUtils {
 
+    /**
+     * 树比较
+     */
+    public static boolean equals(TreeNode root1, TreeNode root2) {
+        if (root1 == null && root2 == null) {
+            return true;
+        }
+        if (root1 == null || root2 == null) {
+            return false;
+        }
+
+        if (!root1.val.equals(root2.val)) {
+            return false;
+        }
+
+        return equals(root1.left, root2.left) && equals(root1.right, root2.right);
+    }
+
+    public static boolean isBinarySearchTree(TreeNode node) {
+        if (node == null || (node.left == null && node.right == null)) {
+            return true;
+        }
+
+        return (node.left == null || node.val > node.left.val)
+                && (node.right == null || node.val < node.right.val)
+                && isBinarySearchTree(node.left)
+                && isBinarySearchTree(node.right);
+    }
+
+    /**
+     * 中左右生成树
+     */
     public static TreeNode getTreeByArray(Integer[] arr) {
         if (arr == null || arr.length == 0) {
             return TreeNode.DEFAULT;
