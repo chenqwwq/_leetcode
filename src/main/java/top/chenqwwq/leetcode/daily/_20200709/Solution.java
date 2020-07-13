@@ -34,28 +34,36 @@ public class Solution {
             root.insert(s);
         }
 
-        // dp[i]表示0~i最少的空闲字符
+        // dp[i]表示0~i-1最少的空闲字符
         // dp[i]可以往前遍历
         int[] dp = new int[sentence.length() + 1];
         dp[0] = 0;
 
-
         for (int i = 1; i <= sentence.length(); i++) {
+            // 往前推进一个字符，最多就是多一个空闲字符
             dp[i] = dp[i - 1] + 1;
             Trie curr = root;
+            // 这里是从后往前遍历
             for (int j = i; j >= 1; j--) {
                 int idx = sentence.charAt(j - 1) - 'a';
-                // 遍历字典树
+                // 如果该节点不存在于字典树，直接退出
+                // 当前节点的空闲字符就是+1
                 if (curr.child[idx] == null) {
                     break;
                 }
+
+                // 如果字符存在，并且为末尾字符，则计算当前的空闲字符
+                // dp[j-1]表示当前
                 if (curr.child[idx].isEnd) {
                     dp[i] = Math.min(dp[i], dp[j - 1]);
                 }
+
                 // 完全匹配的时候直接退出
                 if (dp[i] == 0) {
                     break;
                 }
+
+                // 存在字符但不是末尾，则将字符往后推进
                 curr = curr.child[idx];
             }
         }
@@ -63,34 +71,26 @@ public class Solution {
     }
 
     class Trie {
-        Trie[] child;
-
-        boolean isEnd;
+        public Trie[] child;
+        public boolean isEnd;
 
         public Trie() {
-            this.child = new Trie[26];
-            this.isEnd = false;
-        }
-
-        public Trie(boolean isEnd) {
-            this.child = new Trie[26];
-            this.isEnd = isEnd;
+            child = new Trie[26];
+            isEnd = false;
         }
 
         public void insert(String s) {
-            if (s == null || s.length() == 0) {
-                return;
-            }
-            Trie trie = this;
-            final char[] chars = s.toCharArray();
-            for (char aChar : chars) {
-                int index = aChar - 'a';
-                if (trie.child[index] == null) {
-                    trie.child[index] = new Trie();
+            Trie curPos = this;
+
+            for (int i = s.length() - 1; i >= 0; --i) {
+                int t = s.charAt(i) - 'a';
+                if (curPos.child[t] == null) {
+                    curPos.child[t] = new Trie();
                 }
-                trie = trie.child[index];
+                curPos = curPos.child[t];
             }
-            trie.isEnd = true;
+            curPos.isEnd = true;
         }
     }
 }
+
