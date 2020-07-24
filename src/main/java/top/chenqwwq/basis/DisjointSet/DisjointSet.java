@@ -9,6 +9,9 @@ import java.util.Arrays;
  * @date 2020/7/13 下午10:17
  */
 public class DisjointSet {
+    /**
+     * 底层保存形式,tree[i]表示第i个节点的父节点,-1表示为顶级节点
+     */
     private int[] tree;
 
     public DisjointSet(int n) {
