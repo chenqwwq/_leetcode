@@ -34,58 +34,92 @@ package _20200804
 1 <= numCourses <= 10^5
 */
 
-func canFinish_topological_sort() {
+func canFinish(numCourses int, prerequisites [][]int) bool {
 	// 采用拓扑排序
 	// 拓扑排序通常用来排序一系列具有依赖关系的数据
 	// 此处刚好可以用来对有向图中节点做排序
+	// 第一次应用
 
-	// 第一次应用,
-}
-
-func canFinish(numCourses int, prerequisites [][]int) bool {
-	// 简单理解就是判断图中是否有环
-	// prerequisites表示各条边,图为有向图
-
-	// dfs解决
-	// 一次dfs遍历中存在节点被访问了两次 就表示有环
+	// 入度
 	var (
-		// 访问标记
-		visit = make([]int, numCourses)
-		edges = map[int][]int{}
-		dfs   func(i int) bool
+		indegree = make([]int, numCourses)
+		edges    = map[int][]int{}
+		nodes    []int
 	)
 
 	// 遍历全部的边，生成邻接表
 	for _, v := range prerequisites {
+		indegree[v[1]]++
 		edges[v[0]] = append(edges[v[0]], v[1])
 	}
 
-	// 深搜逻辑
-	dfs = func(i int) bool {
-		// 标记已经访问过
-		visit[i] = 1
+	// 找出所有入度为0的点
+	for i, v := range indegree {
+		if v == 0 {
+			nodes = append(nodes, i)
+		}
+	}
 
-		// 遍历所有下游节点
-		for _, v := range edges[i] {
-			if visit[v] == 1 {
-				return false
-			}
-			if visit[v] == 0 {
-				b := dfs(v)
-				if !b {
-					return false
-				}
+	for len(nodes) != 0 {
+		// 减少后续节点入度
+		for _, v := range edges[nodes[0]] {
+			indegree[v]--
+			if indegree[v] == 0 {
+				nodes = append(nodes, v)
 			}
 		}
-
-		visit[i] = 2
-		return true
+		nodes = nodes[1:]
+		numCourses--
 	}
 
-	i := 0
-	for i < numCourses && dfs(i) {
-		i++
-	}
+	return numCourses == 0
 
-	return i == numCourses
 }
+
+//func canFinish(numCourses int, prerequisites [][]int) bool {
+//	// 简单理解就是判断图中是否有环
+//	// prerequisites表示各条边,图为有向图
+//
+//	// dfs解决
+//	// 一次dfs遍历中存在节点被访问了两次 就表示有环
+//	var (
+//		// 访问标记
+//		visit = make([]int, numCourses)
+//		edges = map[int][]int{}
+//		dfs   func(i int) bool
+//	)
+//
+//	// 遍历全部的边，生成邻接表
+//	for _, v := range prerequisites {
+//		edges[v[0]] = append(edges[v[0]], v[1])
+//	}
+//
+//	// 深搜逻辑
+//	dfs = func(i int) bool {
+//		// 标记已经访问过
+//		visit[i] = 1
+//
+//		// 遍历所有下游节点
+//		for _, v := range edges[i] {
+//			if visit[v] == 1 {
+//				return false
+//			}
+//			if visit[v] == 0 {
+//				b := dfs(v)
+//				if !b {
+//					return false
+//				}
+//			}
+//		}
+//
+//		visit[i] = 2
+//		return true
+//	}
+//
+//	i := 0
+//	for i < numCourses && dfs(i) {
+//		i++
+//	}
+//
+//	return i == numCourses
+//}

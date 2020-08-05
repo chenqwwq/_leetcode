@@ -17,6 +17,7 @@ func Test_canFinish(t *testing.T) {
 		args args
 		want bool
 	}{
+		{"case2", args{3, [][]int{{1, 0}, {2, 1}}}, true},
 		{"case1", args{2, [][]int{{1, 0}}}, true},
 		{"case2", args{2, [][]int{{1, 0}, {0, 1}}}, false},
 	}
