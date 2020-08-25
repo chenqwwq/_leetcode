@@ -30,6 +30,34 @@ package _20200820
 
 Click : [3,0]
 
+/**
+[["E","E","E","E","E","E","E","E"],
+ ["E","E","E","E","E","E","E","M"],
+ ["E","E","M","E","E","E","E","E"],
+ ["M","E","E","E","E","E","E","E"],
+ ["E","E","E","E","E","E","E","E"],
+ ["E","E","E","E","E","E","E","E"],
+ ["E","E","E","E","E","E","E","E"],
+ ["E","E","M","M","E","E","E","E"]]
+[0,0]
+[["B","B","B","B","B","B","1","E"],
+["B","1","1","1","B","B","1","M"],
+["1","2","M","1","B","B","1","1"],
+["M","2","1","1","B","B","B","B"],
+["1","1","B","B","B","B","B","B"],
+["B","B","B","B","B","B","B","B"],
+["B","1","2","2","1","B","B","B"],
+["B","1","M","M","1","B","B","B"]]
+
+[["B","B","B","B","B","B","1","E"],
+["B","1","1","1","B","B","1","M"],
+["1","E","M","1","B","B","1","1"],
+["M","E","1","1","B","B","B","B"],
+["1","1","B","B","B","B","B","B"],
+["B","B","B","B","B","B","B","B"],
+["B","1","2","2","1","B","B","B"],
+["B","1","M","M","1","B","B","B"]]
+
 输出:
 
 [['B', '1', 'E', '1', 'B'],
@@ -68,6 +96,10 @@ Click : [1,2]
 */
 
 func updateBoard(board [][]byte, click []int) [][]byte {
+	if board[click[0]][click[1]] == 'M' {
+		board[click[0]][click[1]] = 'X'
+		return board
+	}
 	// x,y的改变
 	change := [8][2]int{
 		{-1, -1},
@@ -79,30 +111,31 @@ func updateBoard(board [][]byte, click []int) [][]byte {
 		{1, -1},
 		{0, -1},
 	}
-	change2 := [4][2]int{
-		{1, 0},
-		{-1, 0},
-		{0, 1},
-		{0, -1},
+	visit := make([][]bool, len(board))
+	for i := 0; i < len(board); i++ {
+		visit[i] = make([]bool, len(board[0]))
 	}
 
+	// 深搜
 	var dfs func(click []int)
+	// 点击的搜索过程
 	dfs = func(click []int) {
-		i := click[0]
-		j := click[1]
-		if i < 0 || i >= len(board) || j < 0 || j > len(board[0]) {
-			return
-		}
-		if board[i][j] == 'M' {
-			board[i][j] = 'X'
-			return
-		}
+		i, j := click[0], click[1]
 
-		// 搜索周边有没有炸弹
+		// 无效点击
+		if i < 0 || i >= len(board) || j < 0 || j >= len(board[0]) {
+			return
+		}
+		if visit[i][j] == true {
+			return
+		}
+		visit[i][j] = true
+
+		// 判断周边有没有炸弹
 		num := 0
 		for _, arr := range change {
 			x, y := i+arr[0], j+arr[1]
-			if x < 0 || x >= len(board) || y < 0 || y > len(board[0]) {
+			if x < 0 || x >= len(board) || y < 0 || y >= len(board[0]) {
 				continue
 			}
 			if board[x][y] == 'M' {
@@ -110,12 +143,13 @@ func updateBoard(board [][]byte, click []int) [][]byte {
 			}
 		}
 		if num != 0 {
-			board[i][j] = byte(num)
+			board[i][j] = byte(num + '0')
 			return
 		}
-
+		// 周边没有炸弹,往外扩散
 		board[i][j] = 'B'
-		for _, arr := range change2 {
+
+		for _, arr := range change {
 			x, y := i+arr[0], j+arr[1]
 			dfs([]int{x, y})
 		}
