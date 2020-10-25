@@ -18,8 +18,7 @@ package top.chenqwwq.leetcode.topic.greedy._1221;
  * 示例 2：
  * <p>
  * 输入：s = "RLLLLRRRLR"
- * 输出：3
- * 解释：s 可以分割为 "RL", "LLLRRR", "LR", 每个子字符串中都包含相同数量的 'L' 和 'R'。
+ * 输出：3 解释：s 可以分割为 "RL", "LLLRRR", "LR", 每个子字符串中都包含相同数量的 'L' 和 'R'。
  * 示例 3：
  * <p>
  * 输入：s = "LLLLRRRR"
