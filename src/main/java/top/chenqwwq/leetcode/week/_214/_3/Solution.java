@@ -51,7 +51,6 @@ import java.util.PriorityQueue;
 public class Solution {
     public int maxProfit(int[] inventory, int orders) {
         // 每次获取当前总数最大的球
-/*
         PriorityQueue<Integer> queue = new PriorityQueue<>(Comparator.reverseOrder());
         for (int i : inventory) {
             queue.offer(i);
@@ -60,17 +59,21 @@ public class Solution {
         int ans = 0;
         while (orders > 0) {
             Integer p1 = queue.poll();
+            if (p1 == null) {
+                break;
+            }
             Integer p2 = queue.poll();
             if (p2 == null) {
-                ans += (2 * (2 * p1 - orders));
-                continue;
+                ans += ((2 * p1 - orders + 1) * (orders >> 1));
+                break;
             } else if (p1.equals(p2)) {
+                ans += p1;
+                queue.offer(--p1);
+                orders--;
+            } else {
 
             }
         }
         return ans;
-*/
-
-        return 1;
     }
 }
