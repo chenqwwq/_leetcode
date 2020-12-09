@@ -1,6 +1,9 @@
 package _20201208
 
-import "strconv"
+import (
+	"math"
+	"strconv"
+)
 
 /**
   @user: chenqwwq
@@ -54,25 +57,49 @@ F.length >= 3；
 
 func splitIntoFibonacci(S string) []int {
 	sl := len(S)
+	var ans []int
 	// 回溯
-	bt := func(curr int, arr []int) []int {
-		// 已经遍历到末尾
+	var back func(curr int) bool
+	back = func(curr int) bool {
 		if curr == sl {
-			return arr
+			return len(ans) >= 3
 		}
-		l := len(arr)
+
+		// 希望的数字
+		l := len(ans)
 		var target int
-		if l >= 3 {
-			target = arr[l-1] + arr[l-2]
+		if l >= 2 {
+			target = ans[l-1] + ans[l-2]
 		}
 
 		for i := curr; i < sl; i++ {
+			// 除了0本身否则不能以0开头
+			if i > curr && S[curr] == '0' {
+				break
+			}
 			tmp, _ := strconv.Atoi(S[curr : i+1])
-			if l >= 3 {
-				if tmp == target {
-					bt(i+1, append(arr, tmp))
+			if tmp > math.MaxInt32 {
+				break
+			}
+			if l >= 2 {
+				if tmp < target {
+					continue
+				}
+				if tmp > target {
+					break
 				}
 			}
+
+			// 在l < 2的是偶
+			ans = append(ans, tmp)
+			if (l < 2 || target == tmp) && back(i+1) {
+				return true
+			}
+			ans = ans[:len(ans)-1]
 		}
+
+		return false
 	}
+	back(0)
+	return ans
 }
