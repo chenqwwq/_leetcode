@@ -47,27 +47,21 @@ func maxProfit(prices []int, fee int) int {
 
 	// dp[0] 表示持有
 	// dp[1] 表示不持有
-	dp := [2][]int{}
-
-	dp[0] = make([]int, l)
-	dp[1] = make([]int, l)
-
-	dp[0][0] = -prices[0]
-	dp[0][1] = 0
+	dp0, dp1 := -prices[0], 0
 
 	for i := 1; i < len(prices); i++ {
 		// 持有的情况分两种:
 		// 1. 之前没有,现在买入
 		// 2. 之前就有，现在不动
-		pre := i - 1
-		dp[0][i] = max(dp[0][pre], dp[1][pre]-prices[i])
+		dp3 := max(dp0, dp1-prices[i])
 
 		// 不持有的情况:
 		// 1. 之前没有现在不懂
 		// 2. 之前有，现在卖了
-		dp[1][i] = max(dp[1][pre], dp[0][pre]+prices[i]-fee)
+		dp1 = max(dp1, dp0+prices[i]-fee)
+		dp0 = dp3
 	}
 
-	return dp[1][l-1]
+	return dp1
 
 }

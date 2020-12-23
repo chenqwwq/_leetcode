@@ -20,10 +20,10 @@ func Test_maxProfit(t *testing.T) {
 		/**
 		输入: prices = [1, 3, 2, 8, 4, 9], fee = 2
 		输出: 8
-		 */
+		*/
 		{
 			name: "1",
-			args: args{[]int{1,3,2,8,4,9},2},
+			args: args{[]int{1, 3, 2, 8, 4, 9}, 2},
 			want: 8,
 		},
 	}
