@@ -75,6 +75,11 @@ func (target *Bit) GetSum(i int) int {
 	return ans
 }
 
+func (target *Bit) Add(i int){
+  
+}
+
+
 // lowbit 获得最后一位1
 // 例如12 => 1100，-12 => 0100 ,12 & -12 => 0100
 func lowbit(i int) int {

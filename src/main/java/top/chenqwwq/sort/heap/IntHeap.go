@@ -31,6 +31,7 @@ package heap
 3. 将已有的元素堆化
 对所有的非叶子节点的元素siftDown,从底部开始
 例如对于一个size=9的数字，希望堆化，则从(9-1) >> 1 = 4 开始进行调整
+
 */
 
 // int 类型的大顶堆
@@ -59,7 +60,8 @@ func max(a, b int) int {
 	return b
 }
 
-// siftUp 将元素从idx位置开始往上升
+// siftUp 元素向上筛选
+// 每次都是和自己父节点比较,对于大顶堆来说，如果父节点小则直接交换
 func (i *IntHeap) siftUp(idx int, element int) {
 	for idx > 0 {
 		parent := (idx - 1) >> 1
@@ -73,7 +75,7 @@ func (i *IntHeap) siftUp(idx int, element int) {
 	i.data[idx] = element
 }
 
-// siftDown 元素从上往下降
+// siftDown 元素从上往下筛选
 func (i *IntHeap) siftDown(idx int, element int) {
 	// 对于一个完全二叉树来说，如果为n阶级，那么子节点的个数为2 ^ n ,基本占全部的节点个数的一半
 	half := i.size >> 1
@@ -97,6 +99,8 @@ func (i *IntHeap) siftDown(idx int, element int) {
 	i.data[idx] = element
 }
 
+// 建堆,时间复杂度O(n)
+// 就是对于每一个非叶子节点都进行向下筛选
 func (i *IntHeap) heapify() {
 	for index := (i.size - 1) >> 1; index >= 0; index-- {
 		i.siftDown(index, i.data[index])
