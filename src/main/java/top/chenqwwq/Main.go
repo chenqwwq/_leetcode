@@ -18,14 +18,32 @@ type Teacher struct {
 }
 
 func main() {
+	f1, err := os.Open(file1)
+	f2, err := os.Open(file2)
+	if err != nil {
+		return
+	}
 
-	m := make(map[int32]bool)
+	c1, err := ioutil.ReadAll(f1)
+	c2, err := ioutil.ReadAll(f2)
 
-	m[1] = false
+	var t1 []Teacher
+	var t2 []Teacher
 
-	b, v := m[1]
+	err = json.Unmarshal([]byte(c1), &t1)
+	err = json.Unmarshal([]byte(c2), &t2)
 
-	fmt.Println(b)
-	fmt.Println(v)
+	fmt.Println(len(t1) + len(t2))
+
+	hash := map[int][]Teacher{}
+	schoolName := map[int]string{}
+	for _, v := range t1 {
+		schoolName[v.SchoolId] = v.SchoolName
+		hash[v.SchoolId] = append(hash[v.SchoolId], v)
+	}
+	for _, v := range t2 {
+		schoolName[v.SchoolId] = v.SchoolName
+		hash[v.SchoolId] = append(hash[v.SchoolId], v)
+	}
 
 }
