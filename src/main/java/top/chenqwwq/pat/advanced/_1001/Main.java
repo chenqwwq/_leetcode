@@ -1,4 +1,4 @@
-package top.chenqwwq.pat._grade_A._1001;
+package top.chenqwwq.pat.advanced._1001;
 
 import java.io.BufferedReader;
 import java.io.IOException;

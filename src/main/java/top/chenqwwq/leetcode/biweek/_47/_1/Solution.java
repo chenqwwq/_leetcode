@@ -1,7 +1,5 @@
 package top.chenqwwq.leetcode.biweek._47._1;
 
-import top.chenqwwq.pat._grade_A._1002.Main;
-
 /**
  * @author chen
  * @date 2021/3/6
