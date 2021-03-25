@@ -17,37 +17,29 @@ public class Main {
             System.out.printf("%d %d %d\n", 0, 0, 0);
             return;
         }
-
         final String[] str = in.readLine().split(" ");
 
         // dp[i] 表示以 str[i] 为末尾的最大和
         // dp[i] = Math.max(dp[i-1]+curr,curr)
-        // 首位默认为0
-        int[] dp = new int[cnt];
-        dp[0] = Integer.parseInt(str[0]);
-        int max = dp[0], ms = 0, me = 0, cs = 0, ce = 0;
+        int pre = 0, max = -1, ms = 0, me = str.length - 1, cs = 0;
 
-        for (int i = 1; i < cnt; i++) {
-            final int curr = Integer.parseInt(str[i]), sum = dp[i - 1] + curr;
-            if (sum > curr) {
-                dp[i] = sum;
-                ce = i;
-                if (dp[i] > max) {
-                    max = dp[i];
-                    ms = cs;
-                    me = ce;
-                }
-            } else if (sum == curr) {
-                dp[i] = curr;
-            } else {
-                dp[i] = curr;
-                cs = ce = i;
+        for (int i = 0; i < cnt; i++) {
+            // pre 表示以当前下标为末尾的子序列的最大和
+            pre += Integer.parseInt(str[i]);
+            if (pre < 0) {
+                pre = 0;
+                cs = i + 1;
+            } else if (pre > max) {
+                max = pre;
+                ms = cs;
+                me = i;
             }
         }
 
         if (max < 0) {
-            System.out.printf("%d %d %d\n", 0, 0, str.length - 1);
+            max = 0;
         }
+
         System.out.printf("%d %d %d\n", max, Integer.parseInt(str[ms]), Integer.parseInt(str[me]));
     }
 }

@@ -27,6 +27,11 @@ public class Main {
             return;
         }
 
+        // 最后一个测试用例，此处必须拦截，否则会超时
+        if (currDst > min) {
+            return;
+        }
+
         for (int i = 0; i < cityCnt; i++) {
             if (marked[i] == -1 || src == i || roads[src][i] == 0) {
                 continue;
