@@ -13,15 +13,17 @@ import java.io.InputStreamReader;
 public class Main_UnionFind {
     static int[][] highways;
     static int[] uf;
-
-
     public static void main(String[] args) throws IOException {
+        // 基础数据
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         final String[] line = reader.readLine().split(" ");
-        final int n = Integer.parseInt(line[0]), m = Integer.parseInt(line[1]), k = Integer.parseInt(line[2]);
+        final int n = Integer.parseInt(line[0]),
+                m = Integer.parseInt(line[1]),
+                k = Integer.parseInt(line[2]);
         uf = new int[n];
-        // 读取道路信息
         highways = new int[m][2];
+
+        // 读取道路信息
         for (int i = 0; i < m; i++) {
             final String[] data = reader.readLine().split(" ");
             highways[i] = new int[]{Integer.parseInt(data[0]) - 1, Integer.parseInt(data[1]) - 1};
@@ -29,11 +31,15 @@ public class Main_UnionFind {
 
         final String[] occupy = reader.readLine().split(" ");
         for (int i = 0; i < k; i++) {
+            // 需要抛除的节点
             final int city = Integer.parseInt(occupy[i]) - 1;
-            // 初始化并查集
+
+            // 重新初始化并查集
             for (int j = 0; j < n; j++) {
                 uf[j] = j;
             }
+
+            // 联合
             for (int[] highway : highways) {
                 if (highway[0] == city || highway[1] == city) {
                     continue;
@@ -42,21 +48,27 @@ public class Main_UnionFind {
                     uf[highway[0]] = highway[1];
                 }
             }
+
+            // 查询连通分量
             int cnt = 0;
-            for (int c = 0; c < n - 1; c++) {
-                if (c != city && find(c) != c) {
+            for (int c = 0; c < n; c++) {
+                if (c != city && uf[c] == c) {
                     cnt++;
                 }
             }
-            System.out.printf("%d\n", cnt);
+            // 每两个分量之间需要一条线路合并,单分量不需要线路
+            System.out.printf("%d\n", cnt - 1);
 
         }
     }
 
+    /**
+     * 带压缩路径的find
+     */
     static int find(int n) {
-        while (uf[n] != n) {
-            n = uf[uf[n]];
+        if (uf[n] != n) {
+            uf[n] = find(uf[n]);
         }
-        return n;
+        return uf[n];
     }
 }
