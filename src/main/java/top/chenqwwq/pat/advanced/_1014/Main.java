@@ -28,10 +28,10 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
         // 首行 窗口数 黄线内等待的最大人数 客户数 查询数
         final String[] first = reader.readLine().split(" ");
-        final int n = Integer.parseInt(first[0]), m = Integer.parseInt(first[1]) - 1, k = Integer.parseInt(first[2]), q = Integer.parseInt(first[3]);
+        final int n = Integer.parseInt(first[0]), m = Integer.parseInt(first[1]) - 1,
+                k = Integer.parseInt(first[2]), q = Integer.parseInt(first[3]);
 
         // 第二行 客户的服务时间
         final String[] second = reader.readLine().split(" ");
@@ -96,7 +96,7 @@ public class Main {
         }
 
         // 查询
-        final String[] query = reader.readLine().split(" ");
+        final String[] query = reader.readLine().split("\\s");
         for (int i = 0; i < q; i++) {
             final int idx = Integer.parseInt(query[i]) - 1;
             int number;
@@ -106,5 +106,7 @@ public class Main {
                 System.out.printf("%s:%s\n", df.format(number), df.format(finish[idx] % 60));
             }
         }
+
+        reader.close();
     }
 }
