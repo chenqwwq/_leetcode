@@ -42,6 +42,39 @@ package top.chenqwwq.leetcode.topic.array._1035;
  **/
 public class Solution {
 	public int maxUncrossedLines(int[] A, int[] B) {
+		final int a = A.length;
+		final int b = B.length;
+		int[][] dp = new int[a + 1][b + 1];
 
+		// init
+		int cnt = 0;
+		for (int i = 1; i <= a; i++) {
+			if (A[i - 1] == B[0]) {
+				cnt = 1;
+			}
+			dp[i][1] = cnt;
+		}
+		cnt = 0;
+		for (int i = 1; i <= b; i++) {
+			if (B[i - 1] == A[0]) {
+				cnt = 1;
+			}
+			dp[1][i] = cnt;
+		}
+
+		for (int i = 2; i <= a; i++) {
+			for (int j = 2; j <= b; j++) {
+				if (A[i - 1] == B[j - 1]) {
+					dp[i][j] = dp[i - 1][j - 1] + 1;
+				} else {
+					dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+				}
+			}
+		}
+		return dp[a][b];
+	}
+
+	private int max(int a, int b, int c) {
+		return Math.max(a, Math.max(b, c));
 	}
 }
