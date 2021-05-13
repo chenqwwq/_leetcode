@@ -56,7 +56,7 @@ func (target *Bit) Update(idx, num int) {
 	for idx < n {
 		target.data[idx] += num
 		// 如果更新3,idx从3 -> 4 -> 8
-		idx += lowbit(idx + 1)
+		idx += lowbit(idx)
 	}
 }
 
