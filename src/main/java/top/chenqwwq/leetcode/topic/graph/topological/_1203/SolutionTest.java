@@ -17,6 +17,25 @@ class SolutionTest {
 	@Test
 	void sortItems() {
 
+
+		/**
+		 * [5,2,6,3,4,0,1,7]
+		 * [6,3,4,1,5,2,0,7]
+		 * [7,1,5,2,0,6,3,4]
+		 */
+		Assertions.assertArrayEquals(new int[]{5, 2, 6, 3, 4, 0, 1, 7}, solution.sortItems(8, 2, new int[]{-1, -1, 1, 0, 0, 1, 0, -1}, new LinkedList<java.util.List<Integer>>() {
+			{
+				add(Arrays.asList());
+				add(Arrays.asList(6));
+				add(Arrays.asList(5));
+				add(Arrays.asList(6));
+				add(Arrays.asList(3, 6));
+				add(Arrays.asList());
+				add(Arrays.asList());
+				add(Arrays.asList());
+			}
+		}));
+
 		/**
 		 * * 5
 		 *  * 5
@@ -39,25 +58,6 @@ class SolutionTest {
 				add(Arrays.asList());
 			}
 		}));
-
-		/**
-		 * [5,2,6,3,4,0,1,7]
-		 * [6,3,4,1,5,2,0,7]
-		 * [7,1,5,2,0,6,3,4]
-		 */
-		Assertions.assertArrayEquals(new int[]{5, 2, 6, 3, 4, 0, 1, 7}, solution.sortItems(8, 2, new int[]{-1, -1, 1, 0, 0, 1, 0, -1}, new LinkedList<java.util.List<Integer>>() {
-			{
-				add(Arrays.asList());
-				add(Arrays.asList(6));
-				add(Arrays.asList(5));
-				add(Arrays.asList(6));
-				add(Arrays.asList(3, 6));
-				add(Arrays.asList());
-				add(Arrays.asList());
-				add(Arrays.asList());
-			}
-		}));
-
 		/**
 		 *4
 		 * 1
