@@ -1,8 +1,8 @@
 package top.chenqwwq.leetcode.topic.graph.topological._1203;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import jdk.management.resource.internal.inst.FileOutputStreamRMHooks;
+
+import java.util.*;
 
 /**
  * 1203. Sort Items by Groups Respecting Dependencies
@@ -57,9 +57,20 @@ public class Solution {
 		// 项目之间存在拓扑关系，组之间也存在
 		// 因为组的项目可能依赖另外一个组
 
-		// 初始化邻接表
+		for (int i = 0; i < group.length; i++) {
+			if (group[i] == -1) {
+				group[i] = m++;
+			}
+		}
+
+		// 邻接表
 		List<Integer>[] groups = new List[m];
 		List<Integer>[] jobs = new List[n];
+		// 入度数组
+		int[] groupsIndegree = new int[m];
+		int[] jobsIndegree = new int[n];
+
+		// 初始化
 		for (int i = 0; i < m; i++) {
 			groups[i] = new ArrayList<>();
 		}
@@ -67,25 +78,19 @@ public class Solution {
 			jobs[i] = new ArrayList();
 		}
 
-		// 入度
-		int[] groupsIndegree = new int[m];
-		int[] jobsIndegree = new int[n];
-
 		// 填充邻接数据,计算入度
-
-		// 任务的入度
 		// i 表示任务，group[i]表示任务对应的群组
 		for (int i = 0; i < beforeItems.size(); i++) {
 			final List<Integer> before = beforeItems.get(i);
+			// 依赖为空
 			if (before.isEmpty()) {
 				continue;
 			}
 			// 第i个任务所依赖的任务
 			for (int job : before) {
-				// 任务i 依赖任务job
+				// 任务i 依赖任务job,方向从 job 指向 i
 				jobs[job].add(i);
-				// 判断依赖的任务的群组和本个是不是同个群组,不是的话群组间也有依赖关系
-				// i 和 job 对应的群组不同
+				// i 和 job 对应的群组不同,那执行 i 的群组就存在 job 的入度
 				if (group[i] != -1 && group[job] != group[i] && group[job] != -1) {
 					groups[group[job]].add(group[i]);
 					groupsIndegree[group[i]]++;
@@ -105,23 +110,31 @@ public class Solution {
 		}
 
 		// 根据两个拓扑排序的结果重新排列任务
+		// 任务的相对顺序不能改变
+		// 组相同的任务移动到一边
+		// 因为经过了拓扑排序，所以此时的任务肯定是可以排列的
+		// 主要应该还是两个拓扑排序拍玩之后的组合
+
+		List<Integer>[] groupsJob = new List[m + 1];
+		for (int i = 0; i <= m; i++) {
+			groupsJob[i] = new ArrayList<>();
+		}
+
+		for (int k : jt) {
+			groupsJob[group[k] + 1].add(k);
+		}
 
 		int[] ans = new int[n];
 		int idx = 0;
-		for (int i : gt) {
-			for (int j = 0; j < n; j++) {
-				if (group[jt[j]] == i || group[jt[j]] == -1) {
-					ans[idx++] = jt[j];
-					group[jt[j]] = -2;
-				}
-			}
-		}
-		for (int i = 0; i < n; i++) {
-			if (group[i] != -2) {
-				ans[idx++] = i;
-			}
+		for (int job : groupsJob[0]) {
+			ans[idx++] = job;
 		}
 
+		for (int g : gt) {
+			for (int j : groupsJob[g + 1]) {
+				ans[idx++] = j;
+			}
+		}
 		return ans;
 	}
 
