@@ -9,6 +9,12 @@ public class TreeNode {
     public TreeNode right;
 
     public TreeNode(Integer x) {
-        val = x;
+        this.val = x;
+    }
+
+    public TreeNode(Integer x, TreeNode left, TreeNode right) {
+        this.val = x;
+        this.left = left;
+        this.right = right;
     }
 }
