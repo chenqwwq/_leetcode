@@ -1,9 +1,7 @@
-package top.chenqwwq.leetcode.topic.backtrack._1799;
+package top.chenqwwq.leetcode.topic.dp._1799;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author chen

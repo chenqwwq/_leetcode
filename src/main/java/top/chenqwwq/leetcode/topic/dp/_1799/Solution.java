@@ -1,7 +1,7 @@
-package top.chenqwwq.leetcode.topic.backtrack._1799;
+package top.chenqwwq.leetcode.topic.dp._1799;
 
-import java.lang.reflect.Parameter;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 1799. N 次操作后的最大分数和
@@ -49,10 +49,9 @@ import java.util.*;
  **/
 public class Solution {
 
-	int ans = 1;
-	int n;
+	int ans = 1, n;
 	int[][] gcds = new int[15][15];
-	List<List<Integer>> lists = new ArrayList<>();
+	Map<Integer, Integer> hash = new HashMap<>();
 
 	public int maxScore(int[] nums) {
 		n = nums.length >> 1;
@@ -64,37 +63,14 @@ public class Solution {
 			}
 		}
 
-		bt(nums, new boolean[nums.length], 0, new ArrayList<>());
-
 		return ans;
 	}
 
 	/**
 	 * 选择的两个数字也不要求顺序,选择的所有数队也不要求顺序
 	 */
-	public void bt(int[] nums, boolean[] visit, int deep, List<Integer> list) {
-		if (deep == nums.length >> 1) {
-			lists.add(new ArrayList<>(list));
-			return;
-		}
-		for (int i = 0; i < n; i++) {
-			if (visit[i]) {
-				continue;
-			}
-			visit[i] = true;
-			for (int j = i + 1; j < nums.length; j++) {
-				if (visit[j]) {
-					continue;
-				}
-				visit[j] = true;
-				list.add(gcds[i * 10 + j]);
-				bt(nums, visit, deep + 1, list);
-				list.add(list.size() - 1);
-				visit[j] = false;
-			}
-			visit[i] = false;
-			return;
-		}
+	public void dfs(int[] nums, boolean[] visit) {
+
 	}
 
 
