@@ -1,4 +1,4 @@
-package top.chenqwwq.leetcode.topic.recursion._124;
+package top.chenqwwq.leetcode.topic.tree._124;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
