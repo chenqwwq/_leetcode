@@ -1,5 +1,6 @@
 package top.chenqwwq.leetcode.daily._20210526;
 
+
 /**
  * 1190. 反转每对括号间的子串
  * 给出一个字符串 s（仅含有小写英文字母和括号）。
@@ -39,31 +40,29 @@ package top.chenqwwq.leetcode.daily._20210526;
  **/
 public class Solution {
 	public String reverseParentheses(String s) {
-		int left = 0, right = s.length() - 1;
-		StringBuilder ans = new StringBuilder();
-		StringBuilder ans1 = new StringBuilder();
-		boolean flag = false;
-		while (left <= right) {
-			if (!flag) {
-				while (left <= right && s.charAt(left) != '(') {
-					ans.append(s.charAt(left++));
-				}
-				while (right > left && s.charAt(right) != ')') {
-					ans1.append(s.charAt(right--));
-				}
-				flag = true;
+		final int n = s.length();
+		char[] c = new char[n], buffer = new char[n];
+		int idx = 0, bufSize = 0;
+
+		for (int i = 0; i < n; i++) {
+			if (s.charAt(i) != ')') {
+				c[idx++] = s.charAt(i);
 			} else {
-				while (left <= right && s.charAt(left) != '(') {
-					ans1.append(s.charAt(left++));
+				while (--idx >= 0 && c[idx] != '(') {
+					buffer[bufSize++] = c[idx];
 				}
-				while (right > left && s.charAt(right) != ')') {
-					ans.append(s.charAt(right--));
+				int curr = 0;
+				while (bufSize >= 1) {
+					c[idx++] = buffer[curr++];
+					bufSize--;
 				}
-				flag = false;
 			}
-			left++;
-			right--;
 		}
-		return ans.append(ans1.reverse()).toString();
+
+		StringBuilder ans = new StringBuilder();
+		for (int i = 0; i < idx; i++) {
+			ans.append(c[i]);
+		}
+		return ans.toString();
 	}
 }

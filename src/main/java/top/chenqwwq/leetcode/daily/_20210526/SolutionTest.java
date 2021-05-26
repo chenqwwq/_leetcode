@@ -14,6 +14,7 @@ class SolutionTest {
 
 	@Test
 	void reverseParentheses() {
+		Assertions.assertEquals("ndyfvefltvecb", solution.reverseParentheses("n(ev(t)((()lfevf))yd)cb()"));
 		Assertions.assertEquals("tauswa", solution.reverseParentheses("ta()usw((((a))))"));
 		Assertions.assertEquals("eqkh", solution.reverseParentheses("((eqk((h))))"));
 		Assertions.assertEquals("dcba", solution.reverseParentheses("(abcd)"));
