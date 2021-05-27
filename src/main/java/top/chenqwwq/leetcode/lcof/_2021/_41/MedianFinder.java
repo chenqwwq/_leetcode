@@ -1,5 +1,8 @@
 package top.chenqwwq.leetcode.lcof._2021._41;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  * 剑指 Offer 41. 数据流中的中位数
  * 如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数值排序之后中间两个数的平均值。
@@ -37,18 +40,44 @@ package top.chenqwwq.leetcode.lcof._2021._41;
  **/
 public class MedianFinder {
 
+	PriorityQueue<Integer> max, min;
+	int cnt = 0;
+
 	/**
 	 * initialize your data structure here.
 	 */
 	public MedianFinder() {
-
+		// 前半段大顶堆
+		min = new PriorityQueue<>(Comparator.reverseOrder());
+		// 后半段小顶堆
+		max = new PriorityQueue<>();
 	}
 
+	/**
+	 * 重点还是在维持两个堆
+	 * 1. 保证堆的大小之差不超过1
+	 * 2. 保证小堆的元素全部小于大堆
+	 * <p>
+	 * * 存在输入为-1，-2，-3
+	 */
 	public void addNum(int num) {
-
+		// 都先加到后半段
+		min.offer(num);
+		max.offer(min.poll());
+		while (min.size() < max.size()) {
+			min.offer(max.poll());
+		}
+		cnt++;
 	}
 
 	public double findMedian() {
-
+		if (cnt == 0) {
+			return -1;
+		}
+		if ((cnt & 1) == 1) {
+			return min.peek();
+		} else {
+			return (min.peek() + max.peek()) / 2.0;
+		}
 	}
 }
