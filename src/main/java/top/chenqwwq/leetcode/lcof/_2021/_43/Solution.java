@@ -6,6 +6,6 @@ package top.chenqwwq.leetcode.lcof._2021._43;
  **/
 public class Solution {
 	public int countDigitOne(int n) {
-		Integer.bitCount()
+		return -1;
 	}
 }
