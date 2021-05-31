@@ -22,7 +22,7 @@ public class TreeUtils {
             return false;
         }
 
-        if (!root1.val.equals(root2.val)) {
+        if (root1.val != root2.val) {
             return false;
         }
 
