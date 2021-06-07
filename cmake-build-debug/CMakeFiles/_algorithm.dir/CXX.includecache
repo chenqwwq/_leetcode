@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/chen/_algorithm/src/main/java/top/chenqwwq/leetcode/daily/_20210607/Solution.cpp
+vector
+/home/chen/_algorithm/src/main/java/top/chenqwwq/leetcode/daily/_20210607/vector
+

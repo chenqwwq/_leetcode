@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/_algorithm.dir/src/main/java/top/chenqwwq/leetcode/daily/_20210607/Solution.cpp.o -o _algorithm 
