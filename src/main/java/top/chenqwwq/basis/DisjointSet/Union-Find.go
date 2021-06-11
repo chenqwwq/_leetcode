@@ -122,7 +122,7 @@ func (r *Rank) Connect(i, j int) bool {
 
 func (r *Rank) Find(i int) int {
 	// 同时开启路径压缩
-	for r.tree[i] == i {
+	for r.tree[i] != i {
 		r.tree[i] = r.Find(r.tree[i])
 	}
 	return r.tree[i]
