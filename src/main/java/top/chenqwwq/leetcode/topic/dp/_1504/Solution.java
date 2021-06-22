@@ -54,5 +54,6 @@ package top.chenqwwq.leetcode.topic.dp._1504;
 public class Solution {
 	public int numSubmat(int[][] mat) {
 		// dp[i][j] 表示chen
+		return -1;
 	}
 }
