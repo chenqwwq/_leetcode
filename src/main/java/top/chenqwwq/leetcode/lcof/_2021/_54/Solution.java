@@ -8,6 +8,6 @@ import top.chenqwwq.leetcode.common.TreeNode;
  **/
 public class Solution {
 	public int kthLargest(TreeNode root, int k) {
-
+		return -1;
 	}
 }
