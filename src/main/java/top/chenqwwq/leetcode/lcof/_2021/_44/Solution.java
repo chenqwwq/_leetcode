@@ -27,6 +27,6 @@ package top.chenqwwq.leetcode.lcof._2021._44;
  **/
 public class Solution {
 	public int findNthDigit(int n) {
-		return Integer.parseInt(String.value(n).charAt(i))
+		return -1;
 	}
 }
