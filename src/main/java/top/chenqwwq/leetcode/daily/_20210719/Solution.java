@@ -1,9 +1,6 @@
 package top.chenqwwq.leetcode.daily._20210719;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Arrays;
 
 /**
  * 1838. 最高频元素的频数
@@ -46,6 +43,24 @@ import java.util.Map;
  **/
 public class Solution {
 	public int maxFrequency(int[] nums, int k) {
+		// 本来用桶排,看了官解用滑动窗口
 
+		Arrays.sort(nums);
+		final int n = nums.length;
+		int ans = 1, left = 0, right = 1, cnt = 1;
+		while (right < n) {
+			if (nums[right] == nums[right - 1]) {
+				cnt++;
+			} else {
+				k -= (nums[right] - nums[right - 1]) * (right - left);
+				while (left < right && k < 0) {
+					k += (nums[right] - nums[left++]);
+				}
+				cnt = right - left + 1;
+			}
+			ans = Math.max(ans, cnt);
+			right++;
+		}
+		return ans;
 	}
 }
