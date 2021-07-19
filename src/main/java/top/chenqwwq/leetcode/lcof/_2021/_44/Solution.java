@@ -27,10 +27,6 @@ package top.chenqwwq.leetcode.lcof._2021._44;
  **/
 public class Solution {
 	public int findNthDigit(int n) {
-<<<<<<< Updated upstream
 		return -1;
-=======
-		return 1;
->>>>>>> Stashed changes
 	}
 }

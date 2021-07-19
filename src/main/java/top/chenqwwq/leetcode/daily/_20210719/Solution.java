@@ -46,34 +46,6 @@ import java.util.Map;
  **/
 public class Solution {
 	public int maxFrequency(int[] nums, int k) {
-		// num -> cnt
-		Map<Integer, Integer> hash = new HashMap<>();
-		for (int num : nums) {
-			hash.put(num, hash.getOrDefault(num, 0) + 1);
-		}
 
-		final List<Integer> numList = new ArrayList<>(hash.keySet());
-		numList.sort((o1, o2) -> Integer.compare(o2, o1));
-
-		int ans = -1;
-		final int n = numList.size();
-
-		for (int i = 0; i < n; i++) {
-			final int num1 = numList.get(i);
-			int idx = i + 1, target = k, cnt1 = hash.get(num1);
-			while (idx < n && target > 0) {
-				final Integer num2 = numList.get(idx), cnt2 = hash.get(num2), diff = num1 - num2;
-				if (target - diff * cnt2 <= 0) {
-					cnt1 += target / diff;
-				} else {
-					cnt1 += cnt2;
-					target -= diff * cnt2;
-				}
-				idx++;
-			}
-			ans = Math.max(ans, cnt1);
-		}
-
-		return ans;
 	}
 }
